@@ -9,7 +9,7 @@ import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Cliente;
 
 public class Clientes {
 
-	List<Cliente> coleccionClientes;
+	public List<Cliente> coleccionClientes;
 
 	public Clientes() {
 		coleccionClientes = new ArrayList<>(); // creando la lista
@@ -39,7 +39,7 @@ public class Clientes {
 		}
 		if (!coleccionClientes.contains(cliente)) {
 			coleccionClientes.add(cliente);
-		}else {
+		} else {
 			throw new OperationNotSupportedException("ERROR: Ya existe un cliente con ese DNI.");
 		}
 	}
@@ -50,10 +50,16 @@ public class Clientes {
 			throw new NullPointerException("ERROR: No se puede buscar un cliente nulo.");
 		}
 
-		if (!coleccionClientes.contains(cliente)) {
-			cliente = null;
+		int indiceCliente = coleccionClientes.indexOf(cliente);
+
+		Cliente clienteList = null;
+
+		if (indiceCliente != -1) { // El -1 en un numerico es como si fuera null
+
+			clienteList = coleccionClientes.get(indiceCliente);
 		}
-		return cliente;
+
+		return clienteList;
 
 	}
 
@@ -88,19 +94,18 @@ public class Clientes {
 		if (telefono != null && !telefono.isBlank()) { // si el telefono no es nulo ni tampoco tiene espacios en blanco
 
 			cliente.setTelefono(telefono);
-			
 
 		}
 		if (nombre != null && !nombre.isBlank()) { // si el nombre es diferente a nulo y no tiene espacios ya que lo
 													// quito con el isBlank
 
-				cliente.setNombre(nombre);
-		} 
-		
-			if (!coleccionClientes.contains(cliente)) {
-				throw new OperationNotSupportedException("ERROR: No existe ningún cliente con ese DNI.");
-			}
-		
+			cliente.setNombre(nombre);
+		}
+
+		if (!coleccionClientes.contains(cliente)) {
+			throw new OperationNotSupportedException("ERROR: No existe ningún cliente con ese DNI.");
+		}
+
 	}
 
 }
