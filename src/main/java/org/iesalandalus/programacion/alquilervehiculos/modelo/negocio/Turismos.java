@@ -5,11 +5,12 @@ import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
 
+import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Turismo;
 
 public class Turismos {
 	
-	List<Turismo> coleccionTurismo; 
+	 public List<Turismo> coleccionTurismo; 
 	
 	public Turismos () {
 		
@@ -52,11 +53,16 @@ public class Turismos {
 			throw new NullPointerException("ERROR: No se puede buscar un turismo nulo.");
 		}
 
-		if (!coleccionTurismo.contains(turismo)) {
-			turismo = null;
+		int indiceTurismo = coleccionTurismo.indexOf(turismo); //Almacenamos los indices de la lista de turismos 
+
+		Turismo TurismoList = null; // lo iniciamos a null
+
+		if (indiceTurismo != -1) { // El -1 en un numerico es como si fuera null, por lo tanto si es diferente de null
+
+			TurismoList = coleccionTurismo.get(indiceTurismo); // Cogemos el indice del turismo 
 		}
-		return turismo;
-		
+
+		return TurismoList; // y lo mostramos 		
 
 	}
 	
