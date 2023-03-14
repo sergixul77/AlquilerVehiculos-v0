@@ -1,6 +1,9 @@
 package org.iesalandalus.programacion.alquilervehiculos.modelo.dominio;
 
 import java.time.LocalDate;
+
+/*version v0*/
+
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
@@ -40,8 +43,8 @@ public class Alquiler {
 			
 			cliente=new Cliente(alquiler.getCliente());
 			turismo = new Turismo(alquiler.getTurismo());
-			setFechaAlquiler(alquiler.getFechaAlquiler());
-			setFechaDevolucion(alquiler.getFechaDevolucion());
+			fechaAlquiler = alquiler.getFechaAlquiler();
+			fechaDevolucion = alquiler.getFechaDevolucion();
 			
 			
 				
@@ -137,9 +140,6 @@ public class Alquiler {
 			int calcularNumDias = (int) (ChronoUnit.DAYS.between(fechaAlquiler,fechaDevolucion)); // Devuelve la diferencia en dias de dos fechas. 
 			
 			 precio = (PRECIO_DIA + factorCilindrada) * calcularNumDias;
-			
-		}else {
-			precio = 0;
 		}
 			
 		return precio;
