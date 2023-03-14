@@ -2,13 +2,15 @@ package org.iesalandalus.programacion.alquilervehiculos.modelo.dominio;
 
 import java.util.Objects;
 
+// version 0
+
 public class Cliente {
 
-	private static final String ER_NOMBRE = "[A-Z][a-zñ]*( [A-Z][a-zñ]*)*";
+	private static final String ER_NOMBRE = "[A-Z][a-zñ]+( [A-Z][a-zñ]+)*";
 
-	private static final String ER_DNI = "[0-9]{8}[A-HJ-NP-TV-Z]{1}";
+	private static final String ER_DNI = "\\d{8}[A-HJ-NP-TV-Z]";
 
-	private static final String ER_TELEFONO = "[6-9][0-9]{8}";
+	private static final String ER_TELEFONO = "[6-9]\\d{8}";
 
 	private String nombre;
 	private String dni;
@@ -74,10 +76,10 @@ public class Cliente {
 		 
 		 int numeroDni = Integer.parseInt(dni.substring(0, 8)); // Utilizo el parseInt para convertir la cadena de numeros a numerico y solo cojo los numeros en este caso del 0 al 8, porque la 9 es la letra.
 		 
-		 int CalcularLetra = letrasDni[numeroDni % 23];
+		 int calcularLetra = letrasDni[numeroDni % 23];
 		 
-		 return dni.charAt(8) == CalcularLetra;
-
+		 return dni.charAt(8) == calcularLetra;
+		 
 	}
 
 	
@@ -90,7 +92,8 @@ public class Cliente {
 		
 		if (telefono == null) {
 			throw new NullPointerException("ERROR: El teléfono no puede ser nulo.");
-		}if (!telefono.matches(ER_TELEFONO)) {
+		}
+		if (!telefono.matches(ER_TELEFONO)) {
 			throw new IllegalArgumentException("ERROR: El teléfono no tiene un formato válido.");
 		}
 		
@@ -128,27 +131,6 @@ public class Cliente {
 	public String toString() {
 		return String.format("%s - %s (%s)", nombre, dni, telefono);
 	}
-
-
-	public static void main(String[] args) {
-		
-		Cliente pepe = new Cliente ("Sergio Gallegos Guerrero" , "77247380V" , "630600706" );
-		
-		System.out.println(pepe.toString());
-		
-					
-		
-		
-		
-		
-		
-		
-
-		
-		
-		
-	}
-	
 	
 	
 }
