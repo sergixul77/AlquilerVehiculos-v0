@@ -55,11 +55,10 @@ public class Modelo {
 	public void insertar(Alquiler alquiler) throws OperationNotSupportedException {
 
 		if (alquiler == null) {
-			throw new NullPointerException("ERROR: No se puede realizar un alquiler nulo."); // poner mensaje
-
+			throw new NullPointerException("ERROR: No se puede realizar un alquiler nulo."); 
 		}
 		
-		Cliente clienteEncontrado = clientes.buscar(alquiler.getCliente());
+		Cliente clienteEncontrado = clientes.buscar(alquiler.getCliente()); // busco el cliente 
 		
 		if ( clienteEncontrado == null) { // Compruebo si el cliente que se pasa por parametro esta
 																// en la coleccion o lista de clientes
@@ -67,7 +66,7 @@ public class Modelo {
 
 		}
 		
-		Turismo turismoEncontrado = turismos.buscar(alquiler.getTurismo());
+		Turismo turismoEncontrado = turismos.buscar(alquiler.getTurismo()); // busco el turismo
 
 		if ( turismoEncontrado == null) { // compruebo si el turismo que me pasan por parametro esta
 																// en la lista o coleccion
