@@ -12,10 +12,7 @@ public enum Opcion {
 	}
 	
 	
-	@Override 
-	public String toString() {
-		return String.format("%s",texto);
-	}
+	
 	
 	
 	private static boolean esOrdinalValido (int ordinal) {
@@ -24,42 +21,20 @@ public enum Opcion {
 		
 	}
 	
-	public static Opcion (int ordinal) {
+	public static Opcion get (int ordinal) {
 		
-		Opcion opcion = null;
+		if (!esOrdinalValido(ordinal)) { // si el ordinal pasado no es correcto pues me salta un mensaje de error 
+			throw new IllegalArgumentException("El ordinal que has pasado no es valido."); 		}
 		
-		switch (ordinal) {
-		  case 1:
-		    opcion= Opcion.SALIR;
-		    break;
-		  case 2:
-		    System.out.println("Tuesday");
-		    break;
-		  case 3:
-		    System.out.println("Wednesday");
-		    break;
-		  case 4:
-		    System.out.println("Thursday");
-		    break;
-		  case 5:
-		    System.out.println("Friday");
-		    break;
-		  case 6:
-		    System.out.println("Saturday");
-		    break;
-		  case 7:
-		    System.out.println("Sunday");
-		    break;
-		}
-		// Outputs "Thursday" (day 4)
-
-		return opcion;
-
-		
+		return Opcion.values()[ordinal];
+	}
+	
+	@Override 
+	public String toString() {
+		return String.format("%s. %s" ,ordinal(),texto);
+	
 	}
 
-
-	
 	
 }
 
