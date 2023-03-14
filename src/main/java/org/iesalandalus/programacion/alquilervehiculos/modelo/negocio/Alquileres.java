@@ -1,6 +1,11 @@
 package org.iesalandalus.programacion.alquilervehiculos.modelo.negocio;
 
+//version 0 
+
 import java.time.LocalDate;
+
+//version 0
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +17,7 @@ import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Turismo;
 
 public class Alquileres {
 
-	List<Alquiler> coleccionAlquileres;
+	 private List<Alquiler> coleccionAlquileres;
 
 	public Alquileres() {
 
@@ -21,7 +26,8 @@ public class Alquileres {
 	}
 	
 	public List<Alquiler> get() {
-		return coleccionAlquileres;
+		
+		return new ArrayList<>(coleccionAlquileres); // devuelvo un nuevo arraylist 
 	}
 	
 
@@ -111,10 +117,13 @@ public class Alquileres {
 		if (alquiler == null) {
 			throw new NullPointerException("ERROR: No se puede devolver un alquiler nulo.");
 		}
-
-		if (coleccionAlquileres.contains(alquiler)) {
+		
+		Alquiler encontradoAlquiler = buscar(alquiler); // busco el alquiler
+		
+		
+		if (encontradoAlquiler != null) { // si es diferente de null lo devuelvo  
 			
-			alquiler.devolver(fechaDevolucion);
+			encontradoAlquiler.devolver(fechaDevolucion); // devuelvo el alquiler que he encontrado gracias al metodo buscar(alquiler)
 			
 		}else {
 			throw new OperationNotSupportedException("ERROR: No existe ningún alquiler igual.");
@@ -129,11 +138,14 @@ public class Alquileres {
 		}
 
 		
-		if (coleccionAlquileres.indexOf(alquiler) == -1) { // El -1 en un numerico es como si fuera null, por lo tanto si es diferente de
+		int alquilerIndice = coleccionAlquileres.indexOf(alquiler);
+		
+		if (alquilerIndice == -1) { // El -1 en un numerico es como si fuera null, por lo tanto si es diferente de
 											// null
-			alquiler=null;  // Cogemos el indice del alquiler
+			alquiler=null;  
 		}else {
-			coleccionAlquileres.get(coleccionAlquileres.indexOf(alquiler));
+		alquiler=coleccionAlquileres.get(alquilerIndice);
+			
 		}
 
 		return alquiler; // devolvemos el valor que hay dentro del indice de la lista.
