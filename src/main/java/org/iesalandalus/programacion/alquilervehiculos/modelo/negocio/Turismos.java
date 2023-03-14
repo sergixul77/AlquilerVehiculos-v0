@@ -1,16 +1,18 @@
 package org.iesalandalus.programacion.alquilervehiculos.modelo.negocio;
 
 import java.util.ArrayList;
+
+
+// version 0
 import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
 
-import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Turismo;
 
 public class Turismos {
 	
-	 public List<Turismo> coleccionTurismo; 
+	 private List<Turismo> coleccionTurismo; 
 	
 	public Turismos () {
 		
@@ -20,18 +22,13 @@ public class Turismos {
 	
 	public List<Turismo> get() {
 
-		return coleccionTurismo;
+		return new ArrayList<>(coleccionTurismo);
 	}
 
 	public int getCantidad () {
 		
-		int cantidadElementos = 0;
-		for (Turismo turismos : coleccionTurismo) {
+		return coleccionTurismo.size(); // devuelvo el tamaño de la coleccion
 
-			cantidadElementos++;
-		}
-
-		return cantidadElementos; // devuelvo el numero de elementos que contiene la lista
 	}
 	
 	public void insertar(Turismo turismo ) throws OperationNotSupportedException {
@@ -55,16 +52,17 @@ public class Turismos {
 
 		int indiceTurismo = coleccionTurismo.indexOf(turismo); //Almacenamos los indices de la lista de turismos 
 
-		Turismo TurismoList = null; // lo iniciamos a null
+		Turismo turismoEncontrado = null; // lo iniciamos a null
 
 		if (indiceTurismo != -1) { // El -1 en un numerico es como si fuera null, por lo tanto si es diferente de null
 
-			TurismoList = coleccionTurismo.get(indiceTurismo); // Cogemos el indice del turismo 
+			turismoEncontrado = coleccionTurismo.get(indiceTurismo); // Cogemos el indice del turismo 
 		}
 
-		return TurismoList; // y lo mostramos 		
+		return turismoEncontrado; // y lo mostramos 		
 
 	}
+	
 	
 	public void borrar(Turismo turismo) throws OperationNotSupportedException {
 
