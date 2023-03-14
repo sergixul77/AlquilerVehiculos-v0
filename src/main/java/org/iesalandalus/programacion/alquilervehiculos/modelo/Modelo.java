@@ -1,6 +1,10 @@
 package org.iesalandalus.programacion.alquilervehiculos.modelo;
 
 import java.time.LocalDate;
+
+// version 0
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,12 +17,14 @@ import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.Alquileres
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.Clientes;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.Turismos;
 
+// version 0
+
 public class Modelo {
 	private Clientes clientes;
 	private Alquileres alquileres;
 	private Turismos turismos;
 
-	public Modelo() {
+	public Modelo() { // preguntar al profesor 
 
 	}
 
@@ -37,14 +43,12 @@ public class Modelo {
 
 	public void insertar(Cliente cliente) throws OperationNotSupportedException {
 
-		cliente = new Cliente(cliente);
-		clientes.insertar(cliente);
-
+		clientes.insertar(new Cliente(cliente));
 	}
 
 	public void insertar(Turismo turismo) throws OperationNotSupportedException {
-		turismo = new Turismo(turismo);
-		turismos.insertar(turismo);
+		
+		turismos.insertar(new Turismo(turismo));
 
 	}
 
@@ -54,17 +58,23 @@ public class Modelo {
 			throw new NullPointerException("ERROR: No se puede realizar un alquiler nulo."); // poner mensaje
 
 		}
-		if (clientes.buscar(alquiler.getCliente()) == null) { // Compruebo si el cliente que se pasa por parametro esta
+		
+		Cliente clienteEncontrado = clientes.buscar(alquiler.getCliente());
+		
+		if ( clienteEncontrado == null) { // Compruebo si el cliente que se pasa por parametro esta
 																// en la coleccion o lista de clientes
 			throw new OperationNotSupportedException("ERROR: No existe el cliente del alquiler.");
 
 		}
+		
+		Turismo turismoEncontrado = turismos.buscar(alquiler.getTurismo());
 
-		if (turismos.buscar(alquiler.getTurismo()) == null) { // compruebo si el turismo que me pasan por parametro esta
+		if ( turismoEncontrado == null) { // compruebo si el turismo que me pasan por parametro esta
 																// en la lista o coleccion
 			throw new OperationNotSupportedException("ERROR: No existe el turismo del alquiler.");
 		}
-		alquiler.getFechaAlquiler();
+		
+		alquiler = new Alquiler(clienteEncontrado,turismoEncontrado,alquiler.getFechaAlquiler());
 
 		alquileres.insertar(alquiler); // insertar alquileres.
 
@@ -82,26 +92,28 @@ public class Modelo {
 	}
 
 	public Turismo buscar(Turismo turismo) {
+		
 
-		if (turismos.buscar(turismo) != null) { // si es diferente de null es que existe el turismo
+		/*if (turismos.buscar(turismo) != null) { // si es diferente de null es que existe el turismo
 
 			turismo = new Turismo(turismo); // definimos una nueva instancia
 		} else { // si no existe el turismo
 			turismo = null;
-		}
-		return turismo;
+		}*/
+		return new Turismo(turismos.buscar(turismo));
 
 	}
 
 	public Alquiler buscar(Alquiler alquiler) {
+		
 
-		if (alquileres.buscar(alquiler) != null) { // si es diferente de null es que existe el alquiler
+		/*if (encontradoAlquiler != null) { // si es diferente de null es que existe el alquiler
 
 			alquiler = new Alquiler(alquiler); // definimos una nueva instancia
 		} else { // si no existe el alquiler
 			alquiler = null;
-		}
-		return alquiler;
+		}*/
+		return new Alquiler(alquileres.buscar(alquiler));
 
 	}
 
@@ -110,8 +122,10 @@ public class Modelo {
 	}
 
 	public void devolver(Alquiler alquiler, LocalDate fechaDevolucion) throws OperationNotSupportedException {
+		
+		Alquiler encontradoAlquiler = alquileres.buscar(alquiler);
 
-		if (buscar(alquiler) == null) {
+		if (alquileres.buscar(alquiler) == null) {
 			throw new OperationNotSupportedException("ERROR: No existe el alquiler a devolver.");
 		} else {
 			alquiler.devolver(fechaDevolucion);
