@@ -7,7 +7,7 @@ public class Turismo {
 	
 	private static final String ER_MARCA = "([A-Z][a-z]+([ -]?[A-Z][a-z]+)?)|[A-Z]+";
 	
-	private static final String ER_MATRICULA = "[0-9]{4}[B-DF-HJ-NP-TV-Z]{3}";
+	private static final String ER_MATRICULA = "\\d{4}[B-DF-HJ-NP-TV-Z]{3}";
 	
 	
 	private String marca;
@@ -52,7 +52,8 @@ public class Turismo {
 		
 		if (marca == null) {
 			throw new NullPointerException("ERROR: La marca no puede ser nula.");
-		} if (!marca.matches(ER_MARCA)) {
+		} 
+		if (!marca.matches(ER_MARCA)) {
 			throw new IllegalArgumentException("ERROR: La marca no tiene un formato válido.");
 		}
 		
@@ -106,9 +107,9 @@ public class Turismo {
 	
 	public static Turismo getTurismoConMatricula (String matricula) {
 		
-		Turismo turismo = new Turismo ("Lambo" , "descapotable" , 40 , matricula );
+		return new Turismo ("Lambo" , "descapotable" , 40 , matricula );
 		
-		return turismo;
+		
 		
 	}
 
