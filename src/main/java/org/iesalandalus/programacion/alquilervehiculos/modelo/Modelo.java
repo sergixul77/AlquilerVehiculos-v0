@@ -123,9 +123,9 @@ public class Modelo {
 
 	public void devolver(Alquiler alquiler, LocalDate fechaDevolucion) throws OperationNotSupportedException {
 		
-		Alquiler encontradoAlquiler = alquileres.buscar(alquiler);
+		Alquiler encontradoAlquiler = alquileres.buscar(alquiler); // busco el alquiler
 
-		if (alquileres.buscar(alquiler) == null) {
+		if (encontradoAlquiler == null) {
 			throw new OperationNotSupportedException("ERROR: No existe el alquiler a devolver.");
 		} else {
 			alquiler.devolver(fechaDevolucion);
