@@ -140,5 +140,10 @@ public class Consola {
 		return new Alquiler(leerClienteDni(), leerTurismoMatricula(),leerFecha("Introduzca la fecha de alquiler"));
 		
 	}
+	
+	public static LocalDate leerFechaDevolucion() {
+		
+		return leerAlquiler().getFechaDevolucion(); // nose si esto esta bien
+	}
 
 }
