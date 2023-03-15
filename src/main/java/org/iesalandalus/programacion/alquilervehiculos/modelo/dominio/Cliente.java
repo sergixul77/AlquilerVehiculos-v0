@@ -4,6 +4,7 @@ import java.util.Objects;
 
 // version 0
 
+
 public class Cliente {
 
 	private static final String ER_NOMBRE = "[A-Z][a-zñ]+( [A-Z][a-zñ]+)*";
@@ -45,7 +46,8 @@ public class Cliente {
 		
 		if (nombre == null) {
 			throw new NullPointerException("ERROR: El nombre no puede ser nulo.");
-		} if(!nombre.matches(ER_NOMBRE)) {
+		} 
+		if(!nombre.matches(ER_NOMBRE)) {
 			throw new IllegalArgumentException("ERROR: El nombre no tiene un formato válido.");
 		}		
 			this.nombre = nombre;
@@ -78,7 +80,7 @@ public class Cliente {
 		 
 		 int calcularLetra = letrasDni[numeroDni % 23];
 		 
-		 return dni.charAt(8) == calcularLetra;
+		 return dni.charAt(8) == calcularLetra; // Compruebo si la letra del dni es igual que la que ha calculado, si es verdadero devuelve True, y si es falso devuelve False. 	
 		 
 	}
 
@@ -93,7 +95,7 @@ public class Cliente {
 		if (telefono == null) {
 			throw new NullPointerException("ERROR: El teléfono no puede ser nulo.");
 		}
-		if (!telefono.matches(ER_TELEFONO)) {
+		if (!telefono.matches(ER_TELEFONO)) { // si el telefono que pasamos por parametro es distinto al de la expresion regular salta una excepcion
 			throw new IllegalArgumentException("ERROR: El teléfono no tiene un formato válido.");
 		}
 		
@@ -102,9 +104,7 @@ public class Cliente {
 	
 	public static Cliente getClienteConDni(String dni) {
 		
-		Cliente client = new Cliente ("Sergio" , dni , "950224506");
-		
-		return client;
+		return new Cliente ("Sergio" , dni , "950224506");
 	}
 	
 
