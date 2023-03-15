@@ -80,25 +80,15 @@ public class Modelo {
 	}
 
 	public Cliente buscar(Cliente cliente) {
+		
+		return new Cliente(clientes.buscar(cliente));
 
-		if (clientes.buscar(cliente) != null) { // si es diferente de null es que existe el client
 
-			cliente = new Cliente(cliente); // definimos una nueva instancia
-		} else { // si no existe el cliente
-			cliente = null;
-		}
-		return cliente;
 	}
 
 	public Turismo buscar(Turismo turismo) {
 		
 
-		/*if (turismos.buscar(turismo) != null) { // si es diferente de null es que existe el turismo
-
-			turismo = new Turismo(turismo); // definimos una nueva instancia
-		} else { // si no existe el turismo
-			turismo = null;
-		}*/
 		return new Turismo(turismos.buscar(turismo));
 
 	}
@@ -106,12 +96,7 @@ public class Modelo {
 	public Alquiler buscar(Alquiler alquiler) {
 		
 
-		/*if (encontradoAlquiler != null) { // si es diferente de null es que existe el alquiler
-
-			alquiler = new Alquiler(alquiler); // definimos una nueva instancia
-		} else { // si no existe el alquiler
-			alquiler = null;
-		}*/
+		
 		return new Alquiler(alquileres.buscar(alquiler));
 
 	}
@@ -127,7 +112,7 @@ public class Modelo {
 		if (encontradoAlquiler == null) {
 			throw new OperationNotSupportedException("ERROR: No existe el alquiler a devolver.");
 		} else {
-			alquiler.devolver(fechaDevolucion);
+			encontradoAlquiler.devolver(fechaDevolucion);
 		}
 
 	}
