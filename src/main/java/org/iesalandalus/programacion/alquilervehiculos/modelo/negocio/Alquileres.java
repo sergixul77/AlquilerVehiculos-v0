@@ -17,32 +17,31 @@ import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Turismo;
 
 public class Alquileres {
 
-	 private List<Alquiler> coleccionAlquileres;
+	private List<Alquiler> coleccionAlquileres;
 
 	public Alquileres() {
 
 		coleccionAlquileres = new ArrayList<>(); // creando la lista
 
 	}
-	
+
 	public List<Alquiler> get() {
-		
-		return new ArrayList<>(coleccionAlquileres); // devuelvo un nuevo arraylist 
+
+		return new ArrayList<>(coleccionAlquileres); // devuelvo un nuevo arraylist
 	}
-	
 
 	public List<Alquiler> get(Cliente cliente) {
-		
-		List<Alquiler> listaNuevaCliente = new ArrayList<>();
-		
-			for (Alquiler alquiler : coleccionAlquileres) {
-				if (alquiler.getCliente().equals(cliente)) {
-					listaNuevaCliente.add(alquiler);
-				}
-			}
-			return listaNuevaCliente;
 
+		List<Alquiler> listaNuevaCliente = new ArrayList<>();
+
+		for (Alquiler alquiler : coleccionAlquileres) {
+			if (alquiler.getCliente().equals(cliente)) {
+				listaNuevaCliente.add(alquiler);
 			}
+		}
+		return listaNuevaCliente;
+
+	}
 
 	public List<Alquiler> get(Turismo turismo) {
 
@@ -54,9 +53,8 @@ public class Alquileres {
 				// almacenamos?
 				listaNuevaTurismo.add(alquiler);
 
-				
 			}
-				 
+
 		}
 		return listaNuevaTurismo; // devolvemos la lista. NOSE SI ESTA BIEN TODO LO QUE HE HECHO.
 
@@ -97,7 +95,7 @@ public class Alquileres {
 		}
 	}
 
-	public void insertar(Alquiler alquiler) throws OperationNotSupportedException  {
+	public void insertar(Alquiler alquiler) throws OperationNotSupportedException {
 
 		if (alquiler == null) {
 			throw new NullPointerException("ERROR: No se puede insertar un alquiler nulo.");
@@ -108,24 +106,22 @@ public class Alquileres {
 			coleccionAlquileres.add(alquiler);
 		}
 
-		
-
 	}
 
-	public void devolver(Alquiler alquiler , LocalDate fechaDevolucion) throws OperationNotSupportedException {
+	public void devolver(Alquiler alquiler, LocalDate fechaDevolucion) throws OperationNotSupportedException {
 
 		if (alquiler == null) {
 			throw new NullPointerException("ERROR: No se puede devolver un alquiler nulo.");
 		}
-		
+
 		Alquiler encontradoAlquiler = buscar(alquiler); // busco el alquiler
-		
-		
-		if (encontradoAlquiler != null) { // si es diferente de null lo devuelvo  
-			
-			encontradoAlquiler.devolver(fechaDevolucion); // devuelvo el alquiler que he encontrado gracias al metodo buscar(alquiler)
-			
-		}else {
+
+		if (encontradoAlquiler != null) { // si es diferente de null lo devuelvo
+
+			encontradoAlquiler.devolver(fechaDevolucion); // devuelvo el alquiler que he encontrado gracias al metodo
+															// buscar(alquiler)
+
+		} else {
 			throw new OperationNotSupportedException("ERROR: No existe ningún alquiler igual.");
 		}
 
@@ -137,15 +133,14 @@ public class Alquileres {
 			throw new NullPointerException("ERROR: No se puede buscar un alquiler nulo.");
 		}
 
-		
 		int alquilerIndice = coleccionAlquileres.indexOf(alquiler);
-		
+
 		if (alquilerIndice == -1) { // El -1 en un numerico es como si fuera null, por lo tanto si es diferente de
-											// null
-			alquiler=null;  
-		}else {
-		alquiler=coleccionAlquileres.get(alquilerIndice);
-			
+									// null
+			alquiler = null;
+		} else {
+			alquiler = coleccionAlquileres.get(alquilerIndice);
+
 		}
 
 		return alquiler; // devolvemos el valor que hay dentro del indice de la lista.
@@ -160,11 +155,10 @@ public class Alquileres {
 
 		if (coleccionAlquileres.contains(alquiler)) { // si existe en la lista
 			coleccionAlquileres.remove(alquiler);
-		}else {
+		} else {
 			throw new OperationNotSupportedException("ERROR: No existe ningún alquiler igual.");
 		}
 
-		
 	}
 
 }

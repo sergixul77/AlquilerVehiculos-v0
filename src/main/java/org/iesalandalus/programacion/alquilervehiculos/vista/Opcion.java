@@ -4,7 +4,7 @@ package org.iesalandalus.programacion.alquilervehiculos.vista;
 
 public enum Opcion {
 
-	SALIR("Salir"), INSERTAR_CLIENTE("insertar cliente"), INSERTAR_TURISMO("Insertar turismos"),
+	SALIR("Salir"), INSERTAR_CLIENTE("Insertar cliente"), INSERTAR_TURISMO("Insertar turismos"),
 	INSERTAR_ALQUILER("Insertar alquiler"), BUSCAR_CLIENTE("Buscar cliente"), BUSCAR_TURISMO("Buscar turismo"),
 	BUSCAR_ALQUILER("Buscar alquiler"), MODIFICAR_CLIENTE("Modificar cliente"), DEVOLVER_ALQUILER("Devolver alquiler"),
 	BORRAR_CLIENTE("Borrar cliente"), BORRAR_TURISMO("Borrar turismo"), BORRAR_ALQUILER("Borrar alquiler"),

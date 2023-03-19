@@ -55,7 +55,7 @@ public class Consola {
 
 		System.out.print(mensaje); // devuelvo el mensaje pasado por parametro
 
-		return Entrada.entero(); // Almaceno en la variable cadena lo que me escribe el usuario; //
+		return Entrada.entero(); // Almaceno en la variable entero lo que me escribe el usuario; //
 	}
 
 	private static LocalDate leerFecha(String mensaje) {
@@ -80,15 +80,16 @@ public class Consola {
 
 			try {
 
-				opcion = Opcion.get(leerEntero("Introduce una opción:"));
+				opcion = Opcion.get(leerEntero("Introduce una opción: "));
 
 			} catch (Exception e) {
 
 				System.out.println("Error: " + e.getMessage());
 			}
 
-		} while (opcion == null && opcion != Opcion.SALIR ); // si la opcion es = null es porque la opcion que le has pasado por parametro no
-									// esta definida
+		} while (opcion == null && opcion != Opcion.SALIR); // si la opcion es = null es porque la opcion que le has
+															// pasado por parametro no
+		// esta definida
 
 		return opcion;
 
@@ -96,13 +97,13 @@ public class Consola {
 
 	public static Cliente leerCliente() {
 
-		return new Cliente(leerCadena("Introduce tu nombre:"), (leerCadena("Introduce tu dni:")),
-				(leerCadena("Introduce tu número de teléfono:")));
+		return new Cliente(leerCadena("Introduce tu nombre: "), (leerCadena("Introduce tu dni: ")),
+				(leerCadena("Introduce tu número de teléfono: ")));
 
 	}
 
 	public static Cliente leerClienteDni() {
-		return Cliente.getClienteConDni(leerCadena("Introduce el dni del cliente:")); // crea un nuevo cliente con dni
+		return Cliente.getClienteConDni(leerCadena("Introduce el dni del cliente: ")); // crea un nuevo cliente con dni
 																						// segun lo que el usuario mete
 																						// por teclado
 
@@ -110,37 +111,42 @@ public class Consola {
 
 	public static String leerNombre() {
 
-		return leerCadena("Introduce tu nombre:");
+		return leerCadena("Introduce tu nombre:  ");
 
 	}
 
 	public static String leerTelefono() {
 
-		return leerCadena("Introduce tu teléfono:");
+		return leerCadena("Introduce tu teléfono: ");
 
 	}
 
 	public static Turismo leerTurismo() {
 
-		return new Turismo(leerCadena("Introduce la marca:"), (leerCadena("Introduce el modelo:")),
-				(leerEntero("Introduce la cilindrada:")), (leerCadena("introduce la matrícula:")));
+		return new Turismo(leerCadena("Introduce la marca: "), (leerCadena("Introduce el modelo: ")),
+				(leerEntero("Introduce la cilindrada: ")), (leerCadena("introduce la matrícula: ")));
 
 	}
 
 	public static Turismo leerTurismoMatricula() {
 
-		return Turismo.getTurismoConMatricula(leerCadena("Introduce la matrícula del vehículo:"));
+		return Turismo.getTurismoConMatricula(leerCadena("Introduce la matrícula del vehículo: "));
 	}
 
 	public static Alquiler leerAlquiler() {
 
-		return new Alquiler(leerClienteDni(), leerTurismoMatricula(), leerFecha("Introduzca la fecha de alquiler:")); // he quitado el mensaje de dentro
+		return new Alquiler(leerClienteDni(), leerTurismoMatricula(), leerFecha("Introduzca la fecha de alquiler: ")); // he
+																														// quitado
+																														// el
+																														// mensaje
+																														// de
+																														// dentro
 
 	}
 
 	public static LocalDate leerFechaDevolucion() {
 
-		return  leerFecha("Introduceme la fecha de devolución:");
+		return leerFecha("Introduceme la fecha de devolución: ");
 	}
 
 }

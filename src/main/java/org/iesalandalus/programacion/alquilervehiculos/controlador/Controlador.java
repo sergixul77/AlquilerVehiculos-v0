@@ -100,14 +100,16 @@ public class Controlador {
 
 	/* Borrar un cliente, un turismo y un alquiler */
 
-	public void borrar(Cliente cliente) throws OperationNotSupportedException {
-
-		modelo.borrar(cliente);
-
-	}
+	
 
 	public void borrar(Turismo turismo) throws OperationNotSupportedException {
 		modelo.borrar(turismo);
+
+	}
+	
+	public void borrar(Cliente cliente) throws OperationNotSupportedException {
+
+		modelo.borrar(cliente);
 
 	}
 

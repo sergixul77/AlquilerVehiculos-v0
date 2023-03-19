@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 // version 0
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class Modelo {
 	private Alquileres alquileres;
 	private Turismos turismos;
 
-	public Modelo() { // preguntar al profesor 
+	public Modelo() { // preguntar al profesor
 
 	}
 
@@ -47,7 +46,7 @@ public class Modelo {
 	}
 
 	public void insertar(Turismo turismo) throws OperationNotSupportedException {
-		
+
 		turismos.insertar(new Turismo(turismo));
 
 	}
@@ -55,48 +54,44 @@ public class Modelo {
 	public void insertar(Alquiler alquiler) throws OperationNotSupportedException {
 
 		if (alquiler == null) {
-			throw new NullPointerException("ERROR: No se puede realizar un alquiler nulo."); 
+			throw new NullPointerException("ERROR: No se puede realizar un alquiler nulo.");
 		}
-		
-		Cliente clienteEncontrado = clientes.buscar(alquiler.getCliente()); // busco el cliente 
-		
-		if ( clienteEncontrado == null) { // Compruebo si el cliente que se pasa por parametro esta
-																// en la coleccion o lista de clientes
+
+		Cliente clienteEncontrado = clientes.buscar(alquiler.getCliente()); // busco el cliente
+
+		if (clienteEncontrado == null) { // Compruebo si el cliente que se pasa por parametro esta
+											// en la coleccion o lista de clientes
 			throw new OperationNotSupportedException("ERROR: No existe el cliente del alquiler.");
 
 		}
-		
+
 		Turismo turismoEncontrado = turismos.buscar(alquiler.getTurismo()); // busco el turismo
 
-		if ( turismoEncontrado == null) { // compruebo si el turismo que me pasan por parametro esta
-																// en la lista o coleccion
+		if (turismoEncontrado == null) { // compruebo si el turismo que me pasan por parametro esta
+											// en la lista o coleccion
 			throw new OperationNotSupportedException("ERROR: No existe el turismo del alquiler.");
 		}
-		
-		alquiler = new Alquiler(clienteEncontrado,turismoEncontrado,alquiler.getFechaAlquiler());
+
+		alquiler = new Alquiler(clienteEncontrado, turismoEncontrado, alquiler.getFechaAlquiler());
 
 		alquileres.insertar(alquiler); // insertar alquileres.
 
 	}
 
 	public Cliente buscar(Cliente cliente) {
-		
-		return new Cliente(clientes.buscar(cliente));
 
+		return new Cliente(clientes.buscar(cliente));
 
 	}
 
 	public Turismo buscar(Turismo turismo) {
-		
 
 		return new Turismo(turismos.buscar(turismo));
 
 	}
 
 	public Alquiler buscar(Alquiler alquiler) {
-		
 
-		
 		return new Alquiler(alquileres.buscar(alquiler));
 
 	}
@@ -106,7 +101,7 @@ public class Modelo {
 	}
 
 	public void devolver(Alquiler alquiler, LocalDate fechaDevolucion) throws OperationNotSupportedException {
-		
+
 		Alquiler encontradoAlquiler = alquileres.buscar(alquiler); // busco el alquiler
 
 		if (encontradoAlquiler == null) {
