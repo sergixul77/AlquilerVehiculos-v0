@@ -34,16 +34,14 @@ public class Controlador {
 	}
 
 	public void comenzar() {
-
+		modelo.comenzar(); // tengo que poner primero modelo,
 		vista.comenzar();
-		modelo.comenzar();
 
 	}
 
 	public void terminar() {
-
-		vista.terminar();
 		modelo.terminar();
+		vista.terminar();
 
 	}
 
@@ -66,21 +64,21 @@ public class Controlador {
 
 	/*------       Busca un cliente o un turismo o un alquiler           --------*/
 
-	public void buscar(Cliente cliente) {
+	public Cliente buscar(Cliente cliente) {
 
-		modelo.buscar(cliente);
-
-	}
-
-	public void buscar(Turismo turismo) {
-
-		modelo.buscar(turismo);
+		 return modelo.buscar(cliente);
 
 	}
 
-	public void buscar(Alquiler alquiler) {
+	public Turismo buscar(Turismo turismo) {
 
-		modelo.buscar(alquiler);
+		return modelo.buscar(turismo);
+
+	}
+
+	public Alquiler buscar(Alquiler alquiler) {
+
+		 return modelo.buscar(alquiler);
 
 	}
 
@@ -119,45 +117,26 @@ public class Controlador {
 
 	}
 
-	// no entiendo esto.
-
 	public List<Cliente> getClientes() {
-		for (Cliente cliente : modelo.getClientes()) {
-			System.out.println(cliente.toString());
-		}
 		return modelo.getClientes();
 	}
 
 	public List<Turismo> getTurismos() {
-		for (Turismo turismo : modelo.getTurismos()) {
-			System.out.println(turismo.toString());
-		}
 		return modelo.getTurismos();
 	}
 
 	public List<Alquiler> getAlquileres() {
-		for (Alquiler alquiler : modelo.getAlquileres()) {
-			System.out.println(alquiler.toString());
-		}
-
+	
 		return modelo.getAlquileres();
 	}
 
 	public List<Alquiler> getAlquileres(Cliente cliente) {
-
-		for (Alquiler alquiler : modelo.getAlquileres(cliente)) {
-			System.out.println(alquiler.toString());
-
-		}
 
 		return modelo.getAlquileres(cliente);
 
 	}
 
 	public List<Alquiler> getAlquileres(Turismo turismo) {
-		for (Alquiler alquiler : modelo.getAlquileres(turismo)) {
-			System.out.println(alquiler.toString());
-		}
 		return modelo.getAlquileres(turismo);
 
 	}
