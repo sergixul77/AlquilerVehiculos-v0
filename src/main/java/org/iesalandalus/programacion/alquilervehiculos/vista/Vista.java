@@ -1,6 +1,9 @@
 package org.iesalandalus.programacion.alquilervehiculos.vista;
 
 import org.iesalandalus.programacion.alquilervehiculos.controlador.Controlador;
+import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Alquiler;
+import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Cliente;
+import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Turismo;
 
 // version 0
 
@@ -21,7 +24,8 @@ public class Vista {
 			Consola.mostrarMenu();
 			eligeOpcion = Consola.elegirOpcion();// este metodo ya lee la opcion y la ejecutara
 			ejecutar(eligeOpcion);
-		} while (eligeOpcion != Opcion.SALIR); // si la opcion es diferente de la opcion salir va a seguir mostrando el menu, para poder seguir eligiendo opciones 
+		} while (eligeOpcion != Opcion.SALIR); // si la opcion es diferente de la opcion salir va a seguir mostrando el
+												// menu, para poder seguir eligiendo opciones
 
 	}
 
@@ -30,9 +34,8 @@ public class Vista {
 	}
 
 	public void ejecutar(Opcion opcion) {
-		//Consola.mostrarCabecera(opcion.toString());
 		switch (opcion) {
-		case BORRAR_CLIENTE	:
+		case BORRAR_CLIENTE:
 			borrarCliente();
 			break;
 
@@ -125,8 +128,9 @@ public class Vista {
 		try {
 			Opcion opcion = Opcion.BUSCAR_CLIENTE;
 			Consola.mostrarCabecera(opcion.toString());
-			controlador.buscar(Consola.leerClienteDni());
-			controlador.getClientes();
+			/* controlador.buscar(Consola.leerClienteDni());  como lo tenia antes*/
+			System.out.println(controlador.buscar(Consola.leerClienteDni()).toString());
+			//controlador.getClientes();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -136,7 +140,7 @@ public class Vista {
 		try {
 			Opcion opcion = Opcion.BUSCAR_TURISMO;
 			Consola.mostrarCabecera(opcion.toString());
-			controlador.buscar(Consola.leerTurismoMatricula());
+			System.out.println(controlador.buscar(Consola.leerTurismoMatricula()).toString());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -146,7 +150,7 @@ public class Vista {
 		try {
 			Opcion opcion = Opcion.BUSCAR_ALQUILER;
 			Consola.mostrarCabecera(opcion.toString());
-			controlador.buscar(Consola.leerAlquiler());
+			System.out.println(controlador.buscar(Consola.leerAlquiler()).toString());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -177,7 +181,7 @@ public class Vista {
 	private void insertarAlquiler() {
 		try {
 			Opcion opcion = Opcion.INSERTAR_ALQUILER;
-			//Consola.mostrarCabecera(opcion.toString());
+			Consola.mostrarCabecera(opcion.toString());
 			controlador.insertar(Consola.leerAlquiler());
 			System.out.println("El alquiler se ha insertado de forma correcta.");
 		} catch (Exception e) {
@@ -200,7 +204,10 @@ public class Vista {
 		try {
 			Opcion opcion = Opcion.LISTAR_ALQUILERES;
 			Consola.mostrarCabecera(opcion.toString());
-			controlador.getAlquileres();
+			for (Alquiler alquiler : controlador.getAlquileres()) {
+				System.out.println(alquiler.toString());
+			}
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -208,10 +215,14 @@ public class Vista {
 
 	private void listarAlquileresClientes() {
 		try {
-			Consola.mostrarCabecera("Lista de alquileres de un cliente:");
+
 			Opcion opcion = Opcion.LISTAR_ALQUILERES_CLIENTE;
 			Consola.mostrarCabecera(opcion.toString());
-			controlador.getAlquileres(Consola.leerClienteDni());
+			for (Alquiler alquiler : controlador.getAlquileres(Consola.leerClienteDni())) {
+				System.out.println(alquiler.toString());
+
+			}
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -219,10 +230,13 @@ public class Vista {
 
 	private void listarAlquileresTurismos() {
 		try {
-			Consola.mostrarCabecera("Lista de alquileres de un turismo:");
+
 			Opcion opcion = Opcion.LISTAR_ALQUILERES_TURISMO;
 			Consola.mostrarCabecera(opcion.toString());
-			controlador.getAlquileres(Consola.leerTurismoMatricula());
+			for (Alquiler alquiler : controlador.getAlquileres(Consola.leerTurismoMatricula())) {
+				System.out.println(alquiler.toString());
+			}
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -232,7 +246,10 @@ public class Vista {
 		try {
 			Opcion opcion = Opcion.LISTAR_CLIENTES;
 			Consola.mostrarCabecera(opcion.toString());
-			controlador.getClientes();
+			for (Cliente cliente : controlador.getClientes()) {
+				System.out.println(cliente.toString());
+			}
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -242,7 +259,9 @@ public class Vista {
 		try {
 			Opcion opcion = Opcion.LISTAR_TURISMOS;
 			Consola.mostrarCabecera(opcion.toString());
-			controlador.getTurismos();
+			for (Turismo turismo : controlador.getTurismos()) {
+				System.out.println(turismo.toString());
+			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
