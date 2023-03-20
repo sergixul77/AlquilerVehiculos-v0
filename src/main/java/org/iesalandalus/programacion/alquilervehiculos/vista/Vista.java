@@ -30,7 +30,7 @@ public class Vista {
 	}
 
 	public void terminar() {
-		System.out.println("Me despido de ti, ha sido un placer!!!");
+		System.out.println("Me despido de ti, desde alquiler Sergio");
 	}
 
 	public void ejecutar(Opcion opcion) {
@@ -128,9 +128,9 @@ public class Vista {
 		try {
 			Opcion opcion = Opcion.BUSCAR_CLIENTE;
 			Consola.mostrarCabecera(opcion.toString());
-			/* controlador.buscar(Consola.leerClienteDni());  como lo tenia antes*/
+			/* controlador.buscar(Consola.leerClienteDni()); como lo tenia antes */
 			System.out.println(controlador.buscar(Consola.leerClienteDni()).toString());
-			//controlador.getClientes();
+			// controlador.getClientes();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

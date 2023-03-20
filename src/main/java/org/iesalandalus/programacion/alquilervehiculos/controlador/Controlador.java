@@ -66,7 +66,7 @@ public class Controlador {
 
 	public Cliente buscar(Cliente cliente) {
 
-		 return modelo.buscar(cliente);
+		return modelo.buscar(cliente);
 
 	}
 
@@ -78,7 +78,7 @@ public class Controlador {
 
 	public Alquiler buscar(Alquiler alquiler) {
 
-		 return modelo.buscar(alquiler);
+		return modelo.buscar(alquiler);
 
 	}
 
@@ -100,13 +100,11 @@ public class Controlador {
 
 	/* Borrar un cliente, un turismo y un alquiler */
 
-	
-
 	public void borrar(Turismo turismo) throws OperationNotSupportedException {
 		modelo.borrar(turismo);
 
 	}
-	
+
 	public void borrar(Cliente cliente) throws OperationNotSupportedException {
 
 		modelo.borrar(cliente);
@@ -128,7 +126,7 @@ public class Controlador {
 	}
 
 	public List<Alquiler> getAlquileres() {
-	
+
 		return modelo.getAlquileres();
 	}
 

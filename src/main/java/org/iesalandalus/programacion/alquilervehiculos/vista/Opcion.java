@@ -21,7 +21,7 @@ public enum Opcion {
 
 	private static boolean esOrdinalValido(int ordinal) {
 
-		 return ordinal >= 0 && ordinal < Opcion.values().length;
+		return ordinal >= 0 && ordinal < Opcion.values().length;
 
 	}
 

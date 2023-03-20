@@ -56,7 +56,7 @@ public class Alquileres {
 			}
 
 		}
-		return listaNuevaTurismo; // devolvemos la lista. NOSE SI ESTA BIEN TODO LO QUE HE HECHO.
+		return listaNuevaTurismo; // devolvemos la lista.
 
 	}
 
